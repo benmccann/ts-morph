@@ -1,9 +1,9 @@
-import fastGlob from "fast-glob";
 import * as fs from "fs";
 import minimatch from "minimatch";
 import mkdirp from "mkdirp";
 import * as os from "os";
 import * as path from "path";
+import { glob, globSync } from "tinyglobby";
 import { Runtime, RuntimeFileSystem, RuntimePath } from "./Runtime";
 
 export class NodeRuntime implements Runtime {
@@ -173,14 +173,18 @@ class NodeRuntimeFileSystem implements RuntimeFileSystem {
     }
 
     glob(patterns: ReadonlyArray<string>) {
-        return fastGlob(patterns as string[], {
+        return glob({
+            patterns: patterns as string[],
+            expandDirectories: false,
             cwd: this.getCurrentDirectory(),
             absolute: true,
         });
     }
 
     globSync(patterns: ReadonlyArray<string>) {
-        return fastGlob.sync(patterns as string[], {
+        return globSync({
+            patterns: patterns as string[],
+            expandDirectories: false,
             cwd: this.getCurrentDirectory(),
             absolute: true,
         });

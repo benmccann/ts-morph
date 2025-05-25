@@ -27,7 +27,7 @@ commonFile.getClassOrThrow("BrowserRuntimePath").remove();
 commonFile.getFunctionOrThrow("isNodeJs").remove();
 commonFile.getImportDeclarationOrThrow("path").remove();
 commonFile.getImportDeclarationOrThrow("minimatch").remove();
-commonFile.getImportDeclarationOrThrow("fast-glob").remove();
+commonFile.getImportDeclarationOrThrow("tinyglobby").remove();
 commonFile.getImportDeclarationOrThrow("mkdirp").remove();
 commonFile.getImportDeclarationOrThrow("os").remove();
 commonFile.getImportDeclarationOrThrow("fs").remove();
